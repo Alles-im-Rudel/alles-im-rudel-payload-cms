@@ -5,14 +5,15 @@ import { adminsOrPublished } from '../../access/adminsOrPublished'
 import { Archive } from '../../blocks/Archive'
 import { CallToAction } from '../../blocks/CallToAction'
 import { Content } from '../../blocks/Content'
+import { Divider } from '../../blocks/Divider'
 import { FormBlock } from '../../blocks/Form'
+import { IndexHero } from '../../blocks/Hero'
 import { MediaBlock } from '../../blocks/Media'
-import { hero } from '../../fields/hero'
+import { TeamGallery } from '../../blocks/TeamGallery'
 import { slugField } from '../../fields/slug'
 import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
 import { populatePublishedDate } from '../../hooks/populatePublishedDate'
 import { formatAppURL, revalidatePage } from '../../hooks/revalidatePage'
-import { IndexHero } from '../../blocks/Hero'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -53,7 +54,16 @@ export const Pages: CollectionConfig = {
       name: 'layout',
       type: 'blocks',
       required: true,
-      blocks: [CallToAction, Content, FormBlock, MediaBlock, Archive, IndexHero],
+      blocks: [
+        CallToAction,
+        Content,
+        FormBlock,
+        MediaBlock,
+        Archive,
+        IndexHero,
+        Divider,
+        TeamGallery,
+      ],
     },
     slugField(),
   ],

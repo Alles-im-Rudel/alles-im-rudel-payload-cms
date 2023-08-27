@@ -8,23 +8,28 @@ const columnFields: Field[] = [
   {
     name: 'size',
     type: 'select',
-    defaultValue: 'oneThird',
+    label: 'Größe',
+    defaultValue: 'full',
     options: [
       {
+        value: 'oneQuarter',
+        label: 'Ein Viertel',
+      },
+      {
         value: 'oneThird',
-        label: 'One Third',
+        label: 'Ein Drittel',
       },
       {
         value: 'half',
-        label: 'Half',
+        label: 'Hälfte',
       },
       {
         value: 'twoThirds',
-        label: 'Two Thirds',
+        label: 'Zwei Drittel',
       },
       {
         value: 'full',
-        label: 'Full',
+        label: 'Komplett',
       },
     ],
   },

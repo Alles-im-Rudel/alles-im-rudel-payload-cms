@@ -7,9 +7,13 @@ import type { GenerateTitle } from '@payloadcms/plugin-seo/types'
 import path from 'path'
 import { buildConfig } from 'payload/config'
 
+import BoardMembers from './collections/BoardMembers'
+import { Branches } from './collections/Branches'
 import Categories from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
+import { Partners } from './collections/Partners'
+import { PlayerBadges } from './collections/PlayerBadges'
 import { Posts } from './collections/Posts'
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
@@ -42,7 +46,17 @@ export default buildConfig({
     }),
   },
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Users, Categories, Pages, Posts, Media],
+  collections: [
+    Users,
+    Categories,
+    Pages,
+    Posts,
+    Media,
+    BoardMembers,
+    Branches,
+    PlayerBadges,
+    Partners,
+  ],
   globals: [Header, Footer],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

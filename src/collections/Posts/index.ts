@@ -73,13 +73,13 @@ export const Posts: CollectionConfig = {
       relationTo: 'media',
       required: true,
     },
-    {
+    /*{
       name: 'author',
       type: 'relationship',
       label: 'Autor',
-      relationTo: 'board-member',
+      relationTo: 'board-members',
       required: true,
-    },
+    },*/
     {
       name: 'tag',
       label: 'Tag',

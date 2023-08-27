@@ -3,7 +3,7 @@ import type { CollectionConfig } from 'payload/types'
 import { admins } from '../../access/admins'
 import { anyone } from '../../access/anyone'
 
-export const BoardMemberFields: CollectionConfig['fields'] = [
+export const BoardMembersFields: CollectionConfig['fields'] = [
   {
     name: 'name',
     type: 'text',
@@ -59,8 +59,8 @@ export const BoardMemberFields: CollectionConfig['fields'] = [
   },
 ]
 
-const BoardMember: CollectionConfig = {
-  slug: 'board-member',
+const BoardMembers: CollectionConfig = {
+  slug: 'board-members',
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'email'],
@@ -72,8 +72,8 @@ const BoardMember: CollectionConfig = {
     delete: admins,
   },
   auth: true,
-  fields: BoardMemberFields,
+  fields: BoardMembersFields,
   timestamps: true,
 }
 
-export default BoardMember
+export default BoardMembers
