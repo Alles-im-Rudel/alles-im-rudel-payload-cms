@@ -19,6 +19,7 @@ import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
+import { IndexPage } from './globals/IndexPage'
 
 const generateTitle: GenerateTitle = () => {
   return 'My Website'
@@ -57,7 +58,7 @@ export default buildConfig({
     PlayerBadges,
     Partners,
   ],
-  globals: [Header, Footer],
+  globals: [Header, Footer, IndexPage],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
