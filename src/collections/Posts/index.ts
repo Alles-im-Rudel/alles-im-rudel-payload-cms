@@ -1,33 +1,13 @@
 import type { CollectionConfig } from 'payload/types'
 
-import { admins } from '../../access/admins'
-import { adminsOrPublished } from '../../access/adminsOrPublished'
-import { slugField } from '../../fields/slug'
-import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
-import { populatePublishedDate } from '../../hooks/populatePublishedDate'
-import { formatAppURL, revalidatePage } from '../../hooks/revalidatePage'
-
 export const Posts: CollectionConfig = {
   slug: 'posts',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'slug', 'updatedAt'],
-    preview: doc =>
-      `${process.env.PAYLOAD_PUBLIC_SITE_URL}/api/preview?url=${formatAppURL({ doc })}`,
-  },
-  hooks: {
-    beforeChange: [populatePublishedDate],
-    afterRead: [populateArchiveBlock],
-    afterChange: [revalidatePage],
-  },
-  versions: {
-    drafts: true,
+    defaultColumns: ['updatedAt'],
   },
   access: {
-    read: adminsOrPublished,
-    update: admins,
-    create: admins,
-    delete: admins,
+    read: () => true,
   },
   fields: [
     {
@@ -73,34 +53,19 @@ export const Posts: CollectionConfig = {
       relationTo: 'media',
       required: true,
     },
-    /*{
+    {
       name: 'author',
       type: 'relationship',
       label: 'Autor',
       relationTo: 'board-members',
       required: true,
-    },*/
+    },
     {
       name: 'tag',
+      type: 'relationship',
       label: 'Tag',
-      type: 'select',
-      defaultValue: 'allgemein',
-      options: [
-        {
-          value: 'allgemein',
-          label: 'Allgemein',
-        },
-        {
-          value: 'airsoft',
-          label: 'Airsoft',
-        },
-        {
-          value: 'gaming',
-          label: 'Gaming',
-        },
-      ],
+      relationTo: 'tags',
       required: true,
     },
-    slugField(),
   ],
 }

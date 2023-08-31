@@ -7,11 +7,13 @@ export const BoardMembersFields: CollectionConfig['fields'] = [
   {
     name: 'name',
     type: 'text',
+    required: true,
   },
   {
     name: 'birthday',
     label: 'Geburtstag',
     type: 'date',
+    required: true,
   },
   {
     name: 'image',
@@ -24,16 +26,19 @@ export const BoardMembersFields: CollectionConfig['fields'] = [
     name: 'instagramLink',
     label: 'Instagram Link',
     type: 'text',
+    required: true,
   },
   {
     name: 'snapchatLink',
     label: 'Snapchat Link',
     type: 'text',
+    required: true,
   },
   {
     name: 'linkedinLink',
     label: 'Linkedin Link',
     type: 'text',
+    required: true,
   },
   {
     name: 'roles',

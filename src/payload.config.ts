@@ -15,6 +15,7 @@ import { Pages } from './collections/Pages'
 import { Partners } from './collections/Partners'
 import { PlayerBadges } from './collections/PlayerBadges'
 import { Posts } from './collections/Posts'
+import { Tags } from './collections/Tags'
 import Users from './collections/Users'
 import BeforeDashboard from './components/BeforeDashboard'
 import { Footer } from './globals/Footer'
@@ -22,7 +23,7 @@ import { Header } from './globals/Header'
 import { IndexPage } from './globals/IndexPage'
 
 const generateTitle: GenerateTitle = () => {
-  return 'My Website'
+  return 'Alles im Rudel'
 }
 
 const mockModulePath = path.resolve(__dirname, './emptyModuleMock.js')
@@ -57,6 +58,7 @@ export default buildConfig({
     Branches,
     PlayerBadges,
     Partners,
+    Tags,
   ],
   globals: [Header, Footer, IndexPage],
   typescript: {
@@ -67,7 +69,9 @@ export default buildConfig({
   },
   ...(process.env.PAYLOAD_PUBLIC_SITE_URL
     ? {
-        cors: [process.env.PAYLOAD_PUBLIC_SITE_URL].filter(Boolean),
+        cors: [process.env.PAYLOAD_PUBLIC_SITE_URL, process.env.PAYLOAD_PUBLIC_MAIN].filter(
+          Boolean,
+        ),
         csrf: [process.env.PAYLOAD_PUBLIC_SITE_URL].filter(Boolean),
       }
     : {}),
@@ -78,13 +82,13 @@ export default buildConfig({
       },
     }),
     nestedDocs({
-      collections: ['pages', 'posts', 'categories'],
+      collections: ['pages', 'categories'],
     }),
     redirects({
       collections: ['pages', 'posts'],
     }),
     seo({
-      collections: ['pages', 'posts'],
+      collections: ['pages'],
       generateTitle,
       uploadsCollection: 'media',
     }),

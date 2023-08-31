@@ -1,7 +1,6 @@
 import type { GlobalConfig } from 'payload/types'
 
 import { backgroundColor } from '../fields/backgroundColor'
-import link from '../fields/link'
 
 export const IndexPage: GlobalConfig = {
   slug: 'index-page',
@@ -18,12 +17,17 @@ export const IndexPage: GlobalConfig = {
         {
           name: 'headline',
           label: 'Überschrift',
-          type: 'richText',
+          type: 'text',
+        },
+        {
+          name: 'subline',
+          label: 'Subline',
+          type: 'text',
         },
         {
           name: 'text',
           label: 'Text',
-          type: 'richText',
+          type: 'textarea',
         },
         {
           name: 'imageRight',

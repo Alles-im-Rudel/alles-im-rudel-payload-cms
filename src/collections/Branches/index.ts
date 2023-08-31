@@ -1,25 +1,21 @@
 import type { CollectionConfig } from 'payload/types'
 
-import { Archive } from '../../blocks/Archive'
-import { CallToAction } from '../../blocks/CallToAction'
+import { admins } from '../../access/admins'
 import { Content } from '../../blocks/Content'
 import { Divider } from '../../blocks/Divider'
-import { FormBlock } from '../../blocks/Form'
 import { Gallery } from '../../blocks/Gallery'
-import { IndexHero } from '../../blocks/Hero'
 import { BranchHero } from '../../blocks/Hero/BranchHero'
-import { MediaBlock } from '../../blocks/Media'
 import { TeamGallery } from '../../blocks/TeamGallery'
 import { slugField } from '../../fields/slug'
-import { formatAppURL } from '../../hooks/revalidatePage'
 
 export const Branches: CollectionConfig = {
   slug: 'branches',
   admin: {
-    useAsTitle: 'title',
-    defaultColumns: ['title', 'slug', 'updatedAt'],
-    preview: doc =>
-      `${process.env.PAYLOAD_PUBLIC_SITE_URL}/api/preview?url=${formatAppURL({ doc })}`,
+    useAsTitle: 'displayName',
+    defaultColumns: ['slug', 'updatedAt'],
+  },
+  access: {
+    read: () => true,
   },
   fields: [
     {
@@ -89,7 +85,6 @@ export const Branches: CollectionConfig = {
     {
       name: 'layout',
       type: 'blocks',
-      required: true,
       blocks: [BranchHero, Content, Divider, Gallery, TeamGallery],
     },
     slugField(),

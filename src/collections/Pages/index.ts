@@ -11,9 +11,7 @@ import { IndexHero } from '../../blocks/Hero'
 import { MediaBlock } from '../../blocks/Media'
 import { TeamGallery } from '../../blocks/TeamGallery'
 import { slugField } from '../../fields/slug'
-import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
-import { populatePublishedDate } from '../../hooks/populatePublishedDate'
-import { formatAppURL, revalidatePage } from '../../hooks/revalidatePage'
+import { formatAppURL } from '../../hooks/revalidatePage'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -22,11 +20,6 @@ export const Pages: CollectionConfig = {
     defaultColumns: ['title', 'slug', 'updatedAt'],
     preview: doc =>
       `${process.env.PAYLOAD_PUBLIC_SITE_URL}/api/preview?url=${formatAppURL({ doc })}`,
-  },
-  hooks: {
-    beforeChange: [populatePublishedDate],
-    afterRead: [populateArchiveBlock],
-    afterChange: [revalidatePage],
   },
   versions: {
     drafts: true,
